@@ -30,7 +30,8 @@ const app = new Vue({
             this.toDoItem[index].done = !this.toDoItem[index].done
         },
         addToList: function () {
-            const action = this.inputToDo.trim();
+            let action = this.inputToDo.trim();
+            action = action.toLowerCase()
             const actionToDo = action[0].toUpperCase() + action.slice(1);
             let newItme = {
                 text: actionToDo,
