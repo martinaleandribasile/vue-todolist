@@ -33,12 +33,23 @@ const app = new Vue({
             let action = this.inputToDo.trim();
             action = action.toLowerCase()
             const actionToDo = action[0].toUpperCase() + action.slice(1);
-            let newItme = {
-                text: actionToDo,
-                done: false
+            let arrayText = []
+            this.toDoItem.forEach(element => {
+                arrayText.push(element.text)
+                console.log(arrayText)
+                return arrayText
+            });
+            if (arrayText.includes(actionToDo)) {
+                alert("action to do already entered")
+                this.inputToDo = ""
+            } else {
+                let newItme = {
+                    text: actionToDo,
+                    done: false
+                }
+                this.inputToDo = ""
+                this.toDoItem.push(newItme)
             }
-            this.inputToDo = ""
-            this.toDoItem.push(newItme)
         },
         deleteItem(position) {
             const newToDO = this.toDoItem.filter((element) => {
